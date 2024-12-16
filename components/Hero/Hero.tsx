@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from 'next/link';
-
+import DownloadButton from "@/components/Hero/Download"
 
 
 import { Menu } from "lucide-react";
@@ -76,11 +76,17 @@ export default function Portfolio() {
         </Link>
         </nav>
         <div className="flex items-center gap-4">
-        <a href="/CV.pdf" download="CV.pdf">
+        {/* <a href="/CV.pdf" download="CV.pdf">
           <button className="text-gray-400 w-full sm:w-[200px] h-[45px] sm:h-[50px] bg-white rounded-lg hover:bg-orange-500 hover:text-blue-500 px-4 sm:px-6">
           Download CV
           </button>
-          </a>
+          </a> */}
+             <div>
+             {/* <h1>My CV</h1> */}
+             <DownloadButton fileUrl="/assets/ADAMU_CV.pdf" fileName="CV.pdf" />
+             </div>
+
+
           <button  className="text-gray-400 ">
             <Menu className="h-6 w-6" />
           </button>
