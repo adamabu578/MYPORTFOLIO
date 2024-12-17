@@ -5,16 +5,17 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from 'next/link';
 import DownloadButton from "@/components/Hero/Download"
-
+import ResponsiveNavbar from "./ResponsiveNavbar";
+import Navbar from "./ResponsiveNavbar";
 
 import { Menu } from "lucide-react";
-// import Button from "@mui/material/Button";
 import purple from "@/public/assets/mancap.png";
 
 import Framer from "./framer";
 import AnimatedGreeting from "@/components/Hero/Animated";
 
-export default function Portfolio() {
+export default function Portfolio()
+{
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -61,35 +62,13 @@ export default function Portfolio() {
         <div className="text-orange-500 font-medium px-4 py-2 rounded-md bg-orange-500/10">
           ADAMU ABU
         </div>
-        <nav className="hidden md:flex space-x-6">
-        <Link href="#About" className="text-gray-400 hover:text-orange-500 transition-colors">
-            About
-        </Link>
-        <Link href="#skills" className="text-gray-400 hover:text-orange-500 transition-colors">
-            Skills
-        </Link>
-        <Link href="#projects" className="text-gray-400 hover:text-orange-500 transition-colors">
-            Projects
-        </Link>
-        <Link href="#contact" className="text-gray-400 hover:text-orange-500 transition-colors">
-            Contact
-        </Link>
-        </nav>
-        <div className="flex items-center gap-4">
-        {/* <a href="/CV.pdf" download="CV.pdf">
-          <button className="text-gray-400 w-full sm:w-[200px] h-[45px] sm:h-[50px] bg-white rounded-lg hover:bg-orange-500 hover:text-blue-500 px-4 sm:px-6">
-          Download CV
-          </button>
-          </a> */}
-             <div>
-             {/* <h1>My CV</h1> */}
-             <DownloadButton fileUrl="/assets/ADAMU_CV.pdf" fileName="CV.pdf" />
-             </div>
-
-
-          <button  className="text-gray-400 ">
-            <Menu className="h-6 w-6" />
-          </button>
+       
+        <Navbar />
+        {/* </nav> */}
+        <div className="hidden md:flex items-center">
+          <div>
+            <DownloadButton fileUrl="/assets/ADAMU_CV.pdf" fileName="CV.pdf" />
+          </div>
         </div>
       </div>
     </header>
