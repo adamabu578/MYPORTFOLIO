@@ -67,7 +67,7 @@ export default function Portfolio()
         {/* </nav> */}
         <div className="hidden md:flex items-center">
           <div>
-            <DownloadButton fileUrl="/assets/ADAMU_CV.pdf" fileName="CV.pdf" />
+            <DownloadButton fileUrl="/assets/adamu-resume.pdf" fileName="CV.pdf" />
           </div>
         </div>
       </div>

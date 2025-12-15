@@ -25,17 +25,17 @@ export default function PortfolioCards() {
             textColor: "text-[#764ABC]",
             icon: "/assets/switch.png",
             description: "An App which allow users to search any kind of books,users can sort books",
-            tools: "React.js, JavaScript, Tailwind CSS",
+            tools: "React.js, Tailwind CSS",
             link: "https://interswitch-book-registry.vercel.app/book"
           },
           {
-            name: "SASOM ACADEMY",
+            name: "FOOD WEB APP",
             color: "bg-[#61DAFB]/10",
             textColor: "text-[#764ABC]",
-            icon: "/assets/sasom.png",
-            description: "Sasom is a software development company",
-            tools: "React.js, JavaScript, Tailwind CSS",
-            link: "https://sasom-academy.vercel.app/"
+            icon: "/assets/glovo-web-app.png",
+            description: "a food delivery web app that allows users to order food online.",
+            tools: "Nextjs, JavaScript, Tailwind CSS",
+            link: "https://food-ordering-app-one-mauve.vercel.app/"
           },
           {
             name: "PORTFOLIO WEBSITE",
@@ -43,7 +43,7 @@ export default function PortfolioCards() {
             textColor: "text-[#764ABC]",
             icon: "/assets/portfolio.png",
             description: "React is a library for building user interfaces.",
-            tools: "React.js, JavaScript, Tailwind CSS",
+            tools: " JavaScript, Tailwind CSS",
             link: "https://adamabu578.github.io/Landing-page/"
           },
           {
@@ -52,7 +52,7 @@ export default function PortfolioCards() {
             textColor: "text-[#764ABC]",
             icon: "/assets/signup.png",
             description: "Bulk SMS Resellers platform.",
-            tools: "React.js, JavaScript, Tailwind CSS",
+            tools: "Next JS Tailwind CSS",
             link: "#"
           },
           {
@@ -61,7 +61,7 @@ export default function PortfolioCards() {
             textColor: "text-[#764ABC]",
             icon: "/assets/fedora.png",
             description: "Human resources and business consulting website.",
-            tools: "React.js, JavaScript, Tailwind CSS",
+            tools: " JavaScript, Tailwind CSS",
             link: "https://fedora-mockup.vercel.app/"
           }
         ].map((skill) => (
