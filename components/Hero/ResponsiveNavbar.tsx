@@ -1,126 +1,112 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import DownloadButton from "./Download";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   return (
-    <nav className="">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-50">
+        <div className="flex justify-between items-center h-24 relative">
           {/* Logo */}
-          {/* <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-gray-800">MyPortfolio</h1>
-          </div> */}
+          <div className="flex-shrink-0 z-50">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              Adamu<span className="text-indigo-600">.</span>
+            </h1>
+          </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="#about">
-              <span className="text-orange-500 hover:text-gray-600 cursor-pointer">
-                About
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-12 z-50">
+            <Link href="#">
+              <span className="text-indigo-600 font-bold text-lg cursor-pointer">
+                Home
               </span>
             </Link>
             <Link href="#skills">
-              <span className="text-orange-500 hover:text-gray-600 cursor-pointer">
-                Skills
+              <span className="text-slate-900 hover:text-indigo-600 font-semibold text-lg cursor-pointer transition">
+                Services
               </span>
             </Link>
             <Link href="#projects">
-              <span className="text-orange-500 hover:text-gray-600 cursor-pointer">
-                Projects
+              <span className="text-slate-900 hover:text-indigo-600 font-semibold text-lg cursor-pointer transition">
+                Works
               </span>
             </Link>
             <Link href="#contact">
-              <span className="text-orange-500 hover:text-gray-600 cursor-pointer">
+              <span className="text-slate-900 hover:text-indigo-600 font-semibold text-lg cursor-pointer transition">
                 Contact
               </span>
             </Link>
           </div>
 
           {/* Hamburger Menu Button */}
-          <div className="flex md:hidden cursor-pointer">
+          <div className="flex md:hidden cursor-pointer z-50">
             <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-blue-500 hover:text-gray-600 focus:outline-none"
-        >
-          {isOpen ? (
-            <svg
-              className="w-10 h-10" // Increased size from w-6 h-6 to w-8 h-8
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-slate-900 hover:text-indigo-600 focus:outline-none"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="w-10 h-10" // Increased size from w-6 h-6 to w-8 h-8
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
+              {isOpen ? (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
-     
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Full-Screen Overlay */}
       {isOpen && (
-        <div className="absolute z-20 top-14 right-10 bg-black">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link href="#about">
-              <span
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-200"
-              >
-                About
+        <div 
+          className="fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-md flex flex-col pt-32 px-4 h-screen w-screen"
+          onClick={() => setIsOpen(false)}
+        >
+          <div 
+            className="w-full bg-white rounded-3xl shadow-2xl border border-gray-100 p-6 flex flex-col space-y-6 text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Link href="#">
+              <span onClick={() => setIsOpen(false)} className="block text-indigo-600 font-bold text-xl hover:bg-indigo-50 px-4 py-3 rounded-xl transition">
+                Home
               </span>
             </Link>
             <Link href="#skills">
-              <span
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-200"
-              >
-                Skills
+              <span onClick={() => setIsOpen(false)} className="block text-slate-900 font-semibold text-xl hover:bg-gray-50 px-4 py-3 rounded-xl transition">
+                Services
               </span>
             </Link>
             <Link href="#projects">
-              <span
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-200"
-              >
-                Projects
+              <span onClick={() => setIsOpen(false)} className="block text-slate-900 font-semibold text-xl hover:bg-gray-50 px-4 py-3 rounded-xl transition">
+                Works
               </span>
             </Link>
             <Link href="#contact">
-              <span
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-200"
-              >
+              <span onClick={() => setIsOpen(false)} className="block text-slate-900 font-semibold text-xl hover:bg-gray-50 px-4 py-3 rounded-xl transition">
                 Contact
               </span>
             </Link>
-            <div className="flex items-center">
-              <div>
-                <DownloadButton fileUrl="/assets/ADAMU_CV.pdf" fileName="CV.pdf" />
-              </div>
+            <div className="pt-4 border-t border-gray-100">
+              <a href="/assets/Frontend-developer.pdf" download="Frontend-developer.pdf" onClick={() => setIsOpen(false)} className="block text-center w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg py-4 rounded-xl shadow-lg transition">
+                Download CV
+              </a>
             </div>
           </div>
         </div>
@@ -130,4 +116,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
